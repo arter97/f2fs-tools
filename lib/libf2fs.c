@@ -786,7 +786,7 @@ int f2fs_dev_is_umounted(char *path)
 	ASSERT(st_buf);
 
 	if (stat(path, st_buf) == 0 && S_ISBLK(st_buf->st_mode)) {
-		int fd = open(path, O_RDONLY | O_EXCL);
+		int fd = open(path, O_RDONLY);
 
 		if (fd >= 0) {
 			close(fd);
@@ -904,16 +904,9 @@ int get_device_info(int i)
 			return -1;
 		}
 
-		if (S_ISBLK(stat_buf->st_mode) &&
-				!c.force && c.func != DUMP && !c.dry_run) {
-			fd = open(dev->path, O_RDWR | O_EXCL);
-			if (fd < 0)
-				fd = open_check_fs(dev->path, O_EXCL);
-		} else {
-			fd = open(dev->path, O_RDWR);
-			if (fd < 0)
-				fd = open_check_fs(dev->path, 0);
-		}
+		fd = open(dev->path, O_RDWR);
+		if (fd < 0)
+			fd = open_check_fs(dev->path, 0);
 	}
 	if (fd < 0) {
 		MSG(0, "\tError: Failed to open the device!\n");
