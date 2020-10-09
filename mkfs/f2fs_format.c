@@ -74,6 +74,7 @@ const char *media_ext_lists[] = {
 	"iso",
 	"gz",
 	"xz",
+	"zip",
 	"zst",
 
 	/* others */
