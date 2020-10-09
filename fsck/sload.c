@@ -30,7 +30,7 @@ typedef void (*fs_config_f)(const char *path, int dir,
 
 static fs_config_f fs_config_func = NULL;
 
-#ifdef WITH_ANDROID
+#if 0
 #include <selinux/android.h>
 #include <private/android_filesystem_config.h>
 #include <private/canned_fs_config.h>
@@ -299,7 +299,7 @@ static int configure_files(void)
 #endif
 skip:
 #endif
-#ifdef WITH_ANDROID
+#if 0
 	/* Load the FS config */
 	if (c.fs_config_file) {
 		int ret = load_canned_fs_config(c.fs_config_file);

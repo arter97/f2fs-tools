@@ -36,7 +36,7 @@
 
 struct f2fs_configuration c;
 
-#ifdef WITH_ANDROID
+#if 0
 #include <sparse/sparse.h>
 struct sparse_file *f2fs_sparse_file;
 static char **blocks;
@@ -395,7 +395,7 @@ int dev_read_version(void *buf, __u64 offset, size_t len)
 	return 0;
 }
 
-#ifdef WITH_ANDROID
+#if 0
 static int sparse_read_blk(__u64 block, int count, void *buf)
 {
 	int i;
@@ -637,7 +637,7 @@ int f2fs_fsync_device(void)
 
 int f2fs_init_sparse_file(void)
 {
-#ifdef WITH_ANDROID
+#if 0
 	if (c.func == MKFS) {
 		f2fs_sparse_file = sparse_file_new(F2FS_BLKSIZE, c.device_size);
 		if (!f2fs_sparse_file)
@@ -679,7 +679,7 @@ int f2fs_init_sparse_file(void)
 
 void f2fs_release_sparse_resource(void)
 {
-#ifdef WITH_ANDROID
+#if 0
 	int j;
 
 	if (c.sparse_mode) {
@@ -704,7 +704,7 @@ int f2fs_finalize_device(void)
 	int i;
 	int ret = 0;
 
-#ifdef WITH_ANDROID
+#if 0
 	if (c.sparse_mode) {
 		int64_t chunk_start = (blocks[0] == NULL) ? -1 : 0;
 		uint64_t j;

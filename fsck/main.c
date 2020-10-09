@@ -28,7 +28,7 @@
 
 struct f2fs_fsck gfsck;
 
-#ifdef WITH_ANDROID
+#if 0
 #include <sparse/sparse.h>
 extern struct sparse_file *f2fs_sparse_file;
 #endif

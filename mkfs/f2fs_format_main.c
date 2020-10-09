@@ -29,7 +29,7 @@
 #include "f2fs_fs.h"
 #include "f2fs_format_utils.h"
 
-#ifdef WITH_ANDROID
+#if 0
 #include <sparse/sparse.h>
 extern struct sparse_file *f2fs_sparse_file;
 #endif
