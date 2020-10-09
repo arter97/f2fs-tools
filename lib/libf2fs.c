@@ -987,6 +987,10 @@ int get_device_info(int i)
 					dev->path, reply_buffer+16);
 		}
 #endif
+#ifdef WITH_ANDROID
+		MSG(0, "Info: Reserving 16384 bytes for crypto footer\n");
+		c.wanted_total_sectors = dev->total_sectors - 4;
+#endif
 	} else {
 		MSG(0, "\tError: Volume type is not supported!!!\n");
 		free(stat_buf);
